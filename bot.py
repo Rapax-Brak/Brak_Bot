@@ -39,12 +39,14 @@ async def on_message(message):
     elif message.content.startswith('!nuke'):
         if message.author.id == client.user.id:
             await nuke(message)
-
+'''
+This doesnt work if you know a fix please do
     elif message.content.startswith('!kick'):
         if message.author.id == client.user.id:
             name = message.content[len('!kick'):].strip()
             await client.send_message(message.channel, "user {} will be kicked".format(name))
             await client.kick(name)
+'''
 @client.event
 async def on_ready():
   print('Logged in as: %s#%s' % (client.user.name, client.user.id))
