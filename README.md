@@ -15,6 +15,13 @@
 !help - Displays a help message
 !nuke - Deletes all previous messages 
 
+# Todo 
+1. Fnd a way to get the userID from the identifier 
+2. Add a banning ststem
+3. Add a way for admins to quickly add people to roles 
+4. Automate roles for things like time based levels like Trusted 
+5. Think of more ideas.
+
 # Contribute 
 
 Anyone can edit this or add new stuff if they wish to i will review it and accept or not accept depending on if i think its useful.
