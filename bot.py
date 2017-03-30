@@ -52,4 +52,6 @@ async def on_ready():
   print('Logged in as: %s#%s' % (client.user.name, client.user.id))
 
 if __name__ == '__main__':
-    client.run('EMAIL', 'PASSWORD')
+    email = input("Email")
+    password = input("password")
+    client.run(email, password)
