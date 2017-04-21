@@ -65,4 +65,4 @@ async def on_ready():
   print('Logged in as: %s#%s' % (client.user.name, client.user.id))
 
 if __name__ == '__main__':
-    client.run('algorecoding@gmail.com', 'racecar88')
+    client.run('***', '***')
