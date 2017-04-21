@@ -4,7 +4,7 @@ from discord.ext import commands
 
 client = discord.Client()
 
-#start nuke code rug seminar earth olive split lunar book agree blur push spare spell defense
+#start nuke code 
 async def nuke(message):
   def __retry(message):
     cnt = 0
