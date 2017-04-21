@@ -4,7 +4,7 @@ from discord.ext import commands
 
 client = discord.Client()
 
-#start nuke code
+#start nuke code rug seminar earth olive split lunar book agree blur push spare spell defense
 async def nuke(message):
   def __retry(message):
     cnt = 0
@@ -39,19 +39,30 @@ async def on_message(message):
     elif message.content.startswith('!nuke'):
         if message.author.id == client.user.id:
             await nuke(message)
-'''
-This doesnt work if you know a fix please do
+
     elif message.content.startswith('!kick'):
         if message.author.id == client.user.id:
             name = message.content[len('!kick'):].strip()
             await client.send_message(message.channel, "user {} will be kicked".format(name))
-            await client.kick(name)
-'''
+
+    elif message.content.startswith("!cowsay"):
+        if message.author.id == client.user.id:
+            cowsay = message.content[len('!cowsay'):].strip()
+            await client.delete_message(message)
+            msg = await client.send_message(message.channel,
+"""
+```
+______
+< {} >
+ ------
+\    ^__^
+  \  (oo)\____
+    (__)\     )\/
+        ||---w||
+        ||    || Sir Loin```""".format(cowsay))
 @client.event
 async def on_ready():
   print('Logged in as: %s#%s' % (client.user.name, client.user.id))
 
 if __name__ == '__main__':
-    email = input("Email")
-    password = input("password")
-    client.run(email, password)
+    client.run('algorecoding@gmail.com', 'racecar88')
