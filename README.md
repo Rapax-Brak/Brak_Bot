@@ -19,7 +19,7 @@
 * **!trumpt name** - Trump gives his opinion on a name 
 * **!trumpq** - generates a random trump quote 
 * **!insult** - generates a random shakesperian type insult 
-**more to come soon**
+* **more to come soon**
 
 # Todo 
 1. Add in insult generator and insult.yml 
