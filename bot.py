@@ -68,6 +68,12 @@ async def on_message(message):
             chuckPull = requests.get("http://api.icndb.com/jokes/random")
             if chuckPull.status_code == 200:
                 await client.send_message(message.channel,chuckPull.json()["value"]["joke"])
+                
+    elif message.content.startswith('!trumpt'):
+       if message.author.id == client.user.id:
+          trumpPull = request.get("placeholder")
+          await client.send_message(message.channel,"Trump thinks\n\n"+chuckPull.json()["message"]+"\n\n His nickname for you is "+chuckPull.json()["nickname"])
+            
 
 #Add a option for users to add as many sentences as they want
     elif message.content.startswith("!wiki"):
