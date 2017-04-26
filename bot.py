@@ -1,10 +1,12 @@
 import discord
-from time import sleep
 from discord.ext import commands
-
+import requests
+from os import path
+import wikipedia
+#add steam api
 client = discord.Client()
 
-#start nuke code 
+#start nuke code rug seminar earth olive split lunar book agree blur push spare spell defense
 async def nuke(message):
   def __retry(message):
     cnt = 0
@@ -31,10 +33,21 @@ async def nuke(message):
         sleep(5)
         counter = 0
 #end
+
+#start spambot
+async def spam(message, cms):
+    count = 0
+    while count < 1000:
+        msg = await client.send_message(message.channel,"BOT: {}".format(cms))
+        if message.content.startswith('!spamstop'):
+            count = 1000
+        count += 1  # This is the same as count = count + 1
+#end
+
 @client.event
 async def on_message(message):
     if message.content.startswith('!help'):
-        msg = await client.send_message(message.channel, "`!nuke - Deletes all messages.`")
+        msg = await client.send_message(message.channel, "`!nuke - Deletes all messages\n!exec - executes basic python commands\n!spam message - this spams a message 100 times \n!spamstop - stops the spam\n!chuck generates a random chuck norris joke\n!wiki subjects - searches wikipedia for a subject \n!cowsay message - puts your message but says it as a cow.`")
 
     elif message.content.startswith('!nuke'):
         if message.author.id == client.user.id:
@@ -44,6 +57,28 @@ async def on_message(message):
         if message.author.id == client.user.id:
             name = message.content[len('!kick'):].strip()
             await client.send_message(message.channel, "user {} will be kicked".format(name))
+
+    elif message.content.startswith('!spam'):
+        if message.author.id == client.user.id:
+            cms = message.content[len('!spam'):].strip()
+            await spam(message = message,cms = cms)
+
+    elif message.content.startswith('!chuck'):
+        if message.author.id == client.user.id:
+            chuckPull = requests.get("http://api.icndb.com/jokes/random")
+            if chuckPull.status_code == 200:
+                await client.send_message(message.channel,chuckPull.json()["value"]["joke"])
+
+#Add a option for users to add as many sentences as they want
+    elif message.content.startswith("!wiki"):
+        if message.author.id == client.user.id:
+            search = message.content[len('!wiki'):].strip()
+            msg = await client.send_message(message.channel,wikipedia.summary("{}".format(search), sentences=5))
+
+    elif message.content.startswith('!exec'):
+        if message.author.id == client.user.id:
+            exe = message.content[len('!exec'):].strip()
+            msg = await client.send_message(message.channel,eval(exe))
 
     elif message.content.startswith("!cowsay"):
         if message.author.id == client.user.id:
@@ -65,4 +100,4 @@ async def on_ready():
   print('Logged in as: %s#%s' % (client.user.name, client.user.id))
 
 if __name__ == '__main__':
-    client.run('***', '***')
+    client.run('x@x.x', 'x')
