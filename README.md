@@ -16,11 +16,11 @@
 !nuke - Deletes all previous messages 
 
 # Todo 
-1. Fnd a way to get the userID from the identifier 
-2. Add a banning ststem
-3. Add a way for admins to quickly add people to roles 
-4. Automate roles for things like time based levels like Trusted 
-5. Think of more ideas.
+1. Add in insult generator and insult.yml 
+2. Find a way to get a userID from an identifier 
+3. Add a gambling system
+4. Add admin functionality
+
 
 # Contribute 
 
