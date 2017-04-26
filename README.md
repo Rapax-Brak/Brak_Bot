@@ -4,7 +4,7 @@
 
 1. Install discord.py https://github.com/Rapptz/discord.py
 2. go to windows power shell mac terminal or linx terminal
-3. Tpye python -V to see if you have the correct version of python if not install it 
+3. Tpye python -V to see if you have the correct version of python if not install it python 3.6
 4. then go to the directory of the brak_bot folder ex. C:\users\user\Desktop
 5. type python brak_bot.py
 6. Input user info 
