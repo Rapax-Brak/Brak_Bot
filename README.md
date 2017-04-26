@@ -12,15 +12,14 @@
 
 # Commands
 
-!help - Displays a help message
-!nuke - Deletes all previous messages 
-!cowsay message - says things as a cow 
-!chuck - generates a chuck norris joke
-!trumpt name - Trump gives his opinion on a name 
-!trumpq - generates a random trump quote 
-!insult - generates a random shakesperian type insult 
-
-            more to come soon 
+* **!help** - Displays a help message
+* **!nuke** - Deletes all previous messages 
+* **!cowsay message** - says things as a cow 
+* **!chuck** - generates a chuck norris joke
+* **!trumpt name** - Trump gives his opinion on a name 
+* **!trumpq** - generates a random trump quote 
+* **!insult** - generates a random shakesperian type insult 
+**more to come soon**
 
 # Todo 
 1. Add in insult generator and insult.yml 
