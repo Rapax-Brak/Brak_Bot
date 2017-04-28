@@ -1,12 +1,42 @@
 import discord
+import random
 from discord.ext import commands
 import requests
 from os import path
 import wikipedia
+import urllib
+import os
+import ruamel.yaml
+import json
+
 #add steam api
 client = discord.Client()
+listVIP = ['191063904384712706']
+#start meme generator
+async def meme(message):
+    image = random.randint(0, 11)
+    image += 1
+    if image >= 12:
+        video = random.randint(0,5)
+        video += 1
+        if video == 12:
+            video = "https://www.youtube.com/watch?v=8JQHm7Jsxiw"
+            await client.send_message(message.channel, video)
+    elif image < 12:
+        file = '{}.jpg'.format(image)
+        await client.send_file(message.channel, file)
+#end
+#start insult generator
+async def insult(message):
+    config = ruamel.yaml.load(open(os.path.dirname(__file__) + 'insults.yml'))
+    pref = 'Thou'
+    col1 = random.choice(config['column1'])
+    col2 = random.choice(config['column2'])
+    col3 = random.choice(config['column3'])
+    msg = await client.send_message(message.channel, pref + ' ' + col1 + ' ' + col2 + ' ' + col3 + '.')
+#end
 
-#start nuke code rug seminar earth olive split lunar book agree blur push spare spell defense
+#start nuke code rug seminar earth olive split lunar book agree 
 async def nuke(message):
   def __retry(message):
     cnt = 0
@@ -47,7 +77,10 @@ async def spam(message, cms):
 @client.event
 async def on_message(message):
     if message.content.startswith('!help'):
-        msg = await client.send_message(message.channel, "`!nuke - Deletes all messages\n!exec - executes basic python commands\n!spam message - this spams a message 100 times \n!spamstop - stops the spam\n!chuck generates a random chuck norris joke\n!wiki subjects - searches wikipedia for a subject \n!cowsay message - puts your message but says it as a cow.`")
+        if message.author.id == client.user.id or message.author.id == listVIP[0]:
+            msg = await client.send_message(message.channel, "'Owners Commands\n!nuke - Deletes all messages\n!exec - executes basic python commands\n!spam message - this spams a message 100 times \n!spamstop - stops the spam\n!chuck generates a random chuck norris joke\n!wiki subjects - searches wikipedia for a subject \n!cowsay message - puts your message but says it as a cow.`")
+        elif message.author.id != client.user.id:
+            msg = await client.send_message(message.channel, "'User Commands\n!help - Display helps message\n!chuck - displays random chuck norris joke\n!insult - makes an insult\n!trump name - trump gives his opinion'")
 
     elif message.content.startswith('!nuke'):
         if message.author.id == client.user.id:
@@ -64,20 +97,25 @@ async def on_message(message):
             await spam(message = message,cms = cms)
 
     elif message.content.startswith('!chuck'):
-        if message.author.id == client.user.id:
             chuckPull = requests.get("http://api.icndb.com/jokes/random")
             if chuckPull.status_code == 200:
                 await client.send_message(message.channel,chuckPull.json()["value"]["joke"])
-                
-    elif message.content.startswith('!trumpt'):
-       if message.author.id == client.user.id:
-          trumpPull = request.get("placeholder")
-          await client.send_message(message.channel,"Trump thinks\n\n"+chuckPull.json()["message"]+"\n\n His nickname for you is "+chuckPull.json()["nickname"])
-            
+
+    elif message.content.startswith('!trump'):
+            name = message.content[len('!trump'):].strip()
+            trumpPull = requests.get("https://api.whatdoestrumpthink.com/api/v1/quotes/personalized?q={}".format(name))
+            await client.send_message(message.channel,"Trump thinks \nTRUMP: "+trumpPull.json()["message"]+" \ntheir nickname is "+trumpPull.json()["nickname"])
+
+#fix memes
+    elif message.content.startswith('!meme'):
+            await meme(message=message)
+
+    elif message.content.startswith('!insult'):
+            await insult(message)
 
 #Add a option for users to add as many sentences as they want
     elif message.content.startswith("!wiki"):
-        if message.author.id == client.user.id:
+        if message.author.id == client.user.id or message.author.id == listVIP[0]:
             search = message.content[len('!wiki'):].strip()
             msg = await client.send_message(message.channel,wikipedia.summary("{}".format(search), sentences=5))
 
@@ -85,6 +123,11 @@ async def on_message(message):
         if message.author.id == client.user.id:
             exe = message.content[len('!exec'):].strip()
             msg = await client.send_message(message.channel,eval(exe))
+
+    elif message.content.startswith('!sh'):
+        if message.author.id == client.user.id:
+            cmd = message.content[len('!sh'):].strip()
+            msg = await client.send_message(message.channel,os.system("{}".format(cmd)  ))
 
     elif message.content.startswith("!cowsay"):
         if message.author.id == client.user.id:
@@ -106,4 +149,4 @@ async def on_ready():
   print('Logged in as: %s#%s' % (client.user.name, client.user.id))
 
 if __name__ == '__main__':
-    client.run('x@x.x', 'x')
+    client.run('x', 'x')
