@@ -19,8 +19,28 @@ async def meme(message):
     if image >= 12:
         video = random.randint(0,5)
         video += 1
-        if video == 12:
+        if video == 1:
             video = "https://www.youtube.com/watch?v=8JQHm7Jsxiw"
+            await client.send_message(message.channel, video)
+            
+        elif video == 2:
+            video = ''
+            await client.send_message(message.channel, video)
+            
+        elif video == 3:
+            video = ''
+            await client.send_message(message.channel, video)
+            
+        elif video == 4:
+            video = ''
+            await client.send_message(message.channel, video)
+            
+        elif video == 5:
+            video = ''
+            await client.send_message(message.channel, video)
+            
+        elif video == 6:
+            video = ''
             await client.send_message(message.channel, video)
     elif image < 12:
         file = '{}.jpg'.format(image)
