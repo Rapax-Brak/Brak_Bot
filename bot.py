@@ -9,6 +9,8 @@ import os
 import ruamel.yaml
 import json
 
+
+apikey = {"HIiJWST638roVbDgsDAQzk9oQLQrVu4dhBOrNSiC"}
 #add steam api
 client = discord.Client()
 listVIP = ['191063904384712706']
@@ -123,7 +125,8 @@ async def on_message(message):
                 
     elif message.content.startswith('!swtoritem'):
         itemsearch = message.content[len('!swtoritem'):].strip()
-        swtorPull = request.get("http://swtordata.com:80/api/v2/items?query={}".format(itemsearch))
+        apikey = 
+        swtorPull = request.get("http://swtordata.com:80/api/v2/items?query={}".format(itemsearch), X-Api-Key = apikey)
         if swtorPull.status_code == 404:
             await client.send_message(message.channel,"BOT: ERROR 404 - Item not found")
         elif swtorPull.status_code == 200:
