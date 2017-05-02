@@ -10,7 +10,7 @@ import ruamel.yaml
 import json
 
 
-apikey = {"HIiJWST638roVbDgsDAQzk9oQLQrVu4dhBOrNSiC"}
+apikey = {"UVvWJFG638ebIoQtfQNDmx9bDYDeIh4quOBeAFvP"}
 #add steam api
 client = discord.Client()
 listVIP = ['191063904384712706']
