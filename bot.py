@@ -120,7 +120,15 @@ async def on_message(message):
             chuckPull = requests.get("http://api.icndb.com/jokes/random")
             if chuckPull.status_code == 200:
                 await client.send_message(message.channel,chuckPull.json()["value"]["joke"])
-
+                
+    elif message.content.startswith('!swtoritem'):
+        itemsearch = message.content[len('!swtoritem'):].strip()
+        swtorPull = request.get("http://swtordata.com:80/api/v2/items?query={}".format(itemsearch))
+        if swtorPull.status_code == 404:
+            await client.send_message(message.channel,"BOT: ERROR 404 - Item not found")
+        elif swtorPull.status_code == 200:
+            await client.send_message(message.channel,swtorPull.json()[""][""])
+    
     elif message.content.startswith('!trump'):
             name = message.content[len('!trump'):].strip()
             trumpPull = requests.get("https://api.whatdoestrumpthink.com/api/v1/quotes/personalized?q={}".format(name))
