@@ -127,7 +127,7 @@ async def on_message(message):
         if swtorPull.status_code == 404:
             await client.send_message(message.channel,"BOT: ERROR 404 - Item not found")
         elif swtorPull.status_code == 200:
-            await client.send_message(message.channel,swtorPull.json()[""][""])
+            await client.send_message(message.channel,swtorPull.json()["display_name"])
     
     elif message.content.startswith('!trump'):
             name = message.content[len('!trump'):].strip()
