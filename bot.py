@@ -58,7 +58,7 @@ async def insult(message):
     msg = await client.send_message(message.channel, pref + ' ' + col1 + ' ' + col2 + ' ' + col3 + '.')
 #end
 
-#start nuke code rug seminar earth olive split lunar book agree 
+#start nuke code 
 async def nuke(message):
   def __retry(message):
     cnt = 0
