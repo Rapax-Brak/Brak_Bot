@@ -1,5 +1,7 @@
 # Brak_Bot
 
+WARNING: Discord has made Self-Bots and User-Bots against the rules :(
+#CIVILRIGHTS4BOTS
 # Install 
 
 1. Install discord.py https://github.com/Rapptz/discord.py
